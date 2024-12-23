@@ -1,3 +1,11 @@
+export function randomInt(a, b) {
+	return a + Math.floor(Math.random() * (b - a + 1));
+}
+
+export function randomFloat(a, b) {
+	return a + Math.random() * (b - a);
+}
+
 export function randomFromArray(array) {
 	return array[Math.floor(Math.random() * array.length)];
 }

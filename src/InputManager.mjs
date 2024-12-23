@@ -46,6 +46,7 @@ class Action {
 	constructor(name, keys) {
 		this.name = name;
 		this.active = false;
+		this.changeTime = 0;
 		this.keysActiveCount = 0;
 		this.keysActive = Object.fromEntries(keys.map(key => [key, false]));
 		this.onActionDownCbs = new Set();
@@ -82,6 +83,7 @@ class Action {
 			const newActive = this.keysActiveCount > 0;
 			this.active = newActive;
 			if (oldActive !== newActive) {
+				this.changeTime = Date.now();
 				if (newActive) {
 					this.fireActionDown();
 				} else {

@@ -1,0 +1,33 @@
+export const BlockType = {
+	AIR: 0,
+	HARD_WALL: 1,
+	SOFT_WALL: 2,
+	EXIT: 3,
+	BOMB: 4,
+	EXPLOSION_X: 5,
+	EXPLOSION_Y: 6,
+	EXPLOSION_CROSS: 7,
+	POWERUP_BOMBS: 8,
+	POWERUP_LIFE: 9,
+	POWERUP_RANGE: 10,
+	POWERUP_SPEED: 11,
+	POWERUP_REMOTE: 12,
+	POWERUP_INVULNERABILITY: 13,
+};
+
+export const BlockProps = [
+	{solid: false, kills: false, explosion: false, destroyable: false, powerup: false},
+	{solid: true , kills: false, explosion: false, destroyable: false, powerup: false},
+	{solid: true , kills: false, explosion: false, destroyable: true , powerup: false},
+	{solid: false, kills: false, explosion: false, destroyable: false, powerup: false},
+	{solid: true,  kills: false, explosion: false, destroyable: false, powerup: false},
+	{solid: false, kills: true , explosion: true , destroyable: false, powerup: false},
+	{solid: false, kills: true , explosion: true , destroyable: false, powerup: false},
+	{solid: false, kills: true , explosion: true , destroyable: false, powerup: false},
+	{solid: false, kills: false, explosion: false, destroyable: false, powerup: true },
+	{solid: false, kills: false, explosion: false, destroyable: false, powerup: true },
+	{solid: false, kills: false, explosion: false, destroyable: false, powerup: true },
+	{solid: false, kills: false, explosion: false, destroyable: false, powerup: true },
+	{solid: false, kills: false, explosion: false, destroyable: false, powerup: true },
+	{solid: false, kills: false, explosion: false, destroyable: false, powerup: true },
+];
