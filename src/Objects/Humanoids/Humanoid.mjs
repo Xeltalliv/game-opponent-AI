@@ -135,7 +135,7 @@ export class Humanoid {
 	}
 	dropBomb() {
 		if (this.myBombs.length >= this.maxBombs) return false;
-		const bomb = new Bomb(this.main, this.pos.floor().add(new Vec2(0.5, 0.5)), 60, this.explosionRange, this);
+		const bomb = new Bomb(this.main, this.intPos.add(new Vec2(0.5, 0.5)), 60, this.explosionRange, this);
 		this.myBombs.push(bomb);
 		return true;
 	}
