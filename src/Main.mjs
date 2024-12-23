@@ -20,7 +20,7 @@ export class Main {
 		this.dialogManager = new DialogManager(this);
 		this.gameMap = null;
 		this.inputManager = new InputManager(this);
-		this.inputManager.defineAction("walkUp", ["KeyW", "ArrowUP"]);
+		this.inputManager.defineAction("walkUp", ["KeyW", "ArrowUp"]);
 		this.inputManager.defineAction("walkDown", ["KeyS", "ArrowDown"]);
 		this.inputManager.defineAction("walkLeft", ["KeyA", "ArrowLeft"]);
 		this.inputManager.defineAction("walkRight", ["KeyD", "ArrowRight"]);
@@ -173,6 +173,7 @@ export class Main {
 				targetPos = this.gameMap.size.mulScalar(0.5);
 				targetZoom = 6;
 			}
+			targetZoom *= this.renderer.canvas.height / 1080;
 			this.renderer.camPos.selfAdd(targetPos.sub(this.renderer.camPos).divScalar(followDiv));
 			this.renderer.camZoom += (targetZoom - this.renderer.camZoom) / 20;
 		} else {
