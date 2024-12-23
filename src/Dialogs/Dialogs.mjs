@@ -102,7 +102,10 @@ export class HelpDialog extends Dialog {
 		this.enemiesButton = new Button("Enemies", () => {
 			getMainInstance().dialogManager.add(new HelpEnemiesDialog());
 		});
-		this.el.append(title, this.controlsButton.el, this.enemiesButton.el);
+		this.powerupsButton = new Button("Powerups", () => {
+			getMainInstance().dialogManager.add(new HelpPowerupsDialog());
+		});
+		this.el.append(title, this.controlsButton.el, this.enemiesButton.el, this.powerupsButton.el);
 	}
 }
 
@@ -114,7 +117,7 @@ export class HelpControlsDialog extends Dialog {
 		title.textContent = "Controls";
 		this.wasd = new HelpEntry("WASD/ArrowKeys - walking");
 		this.espace = new HelpEntry("E/Space - droping bomb/exiting level");
-		this.qenter = new HelpEntry("Q/Enter - remote");
+		this.qenter = new HelpEntry("Q/Enter - remotely detnate (requires powerup)");
 		this.el.append(title, this.wasd.el, this.espace.el, this.qenter.el);
 	}
 }
@@ -125,11 +128,27 @@ export class HelpEnemiesDialog extends Dialog {
 		const title = document.createElement("h1");
 		title.classList.add("title");
 		title.textContent = "Enemies";
-		this.greenEnemy = new HelpEntry("Green enemies collect powerups. The more powerups they have, the higher their aggro range becomes.", "help/green.png");
-		this.redEnemy = new HelpEntry("Red enemies don't try to mine powerups intentionally. They start attacking you immediately.", "help/red.png");
-		this.purpleEnemy = new HelpEntry("Purple enemies are like red enemies, but instead of trying to explode you, they kill you by touching.", "help/purple.png");
-		this.cyanEnemy = new HelpEntry("Cyan enemies collect powerups as far away from you as possible.", "help/cyan.png");
+		this.greenEnemy = new HelpEntry("Green enemies collect powerups. The more powerups they have, the higher their aggro range becomes.", "help/green.png", "helpImage100");
+		this.redEnemy = new HelpEntry("Red enemies don't try to mine powerups intentionally. They start attacking you immediately.", "help/red.png", "helpImage100");
+		this.purpleEnemy = new HelpEntry("Purple enemies are like red enemies, but instead of trying to explode you, they kill you by touching.", "help/purple.png", "helpImage100");
+		this.cyanEnemy = new HelpEntry("Cyan enemies collect powerups as far away from you as possible.", "help/cyan.png", "helpImage100");
 		this.el.append(title, this.greenEnemy.el, this.redEnemy.el, this.purpleEnemy.el, this.cyanEnemy.el);
+	}
+}
+
+export class HelpPowerupsDialog extends Dialog {
+	constructor() {
+		super();
+		const title = document.createElement("h1");
+		title.classList.add("title");
+		title.textContent = "Powerups";
+		this.bombs = new HelpEntry("Increases amount of bombs player can have simultaneously", "tile8.png", "helpImage25");
+		this.life = new HelpEntry("Gives 1 extra life", "tile9.png", "helpImage25");
+		this.range = new HelpEntry("Increases explosion radius by 1 tile", "tile10.png", "helpImage25");
+		this.speed = new HelpEntry("Increases movement speed", "tile11.png", "helpImage25");
+		this.remote = new HelpEntry("Allows remotely detonating bombs by pressing Q or Enter", "tile12.png", "helpImage25");
+		this.invulnerable = new HelpEntry("Gives invulnerability for 30 seconds", "tile13.png", "helpImage25");
+		this.el.append(title, this.bombs.el, this.life.el, this.range.el, this.speed.el, this.remote.el, this.invulnerable.el);
 	}
 }
 
@@ -182,7 +201,7 @@ export class SettingNumber {
 }
 
 export class HelpEntry {
-	constructor(text, image) {
+	constructor(text, image, imageClass) {
 		this.el = document.createElement("div");
 		this.el.classList.add("helpRow");
 		this.label = document.createElement("div");
@@ -192,7 +211,7 @@ export class HelpEntry {
 		if (image) {
 			this.img = document.createElement("img");
 			this.img.src = `img/${image}`;
-			this.img.classList.add("helpImage");
+			this.img.classList.add(imageClass);
 			this.el.append(this.img);
 		}
 		this.el.append(this.label);

@@ -70,10 +70,15 @@ canvas {
 	justify-content: space-between;
 	padding: 4px;
 }
-.helpImage {
+.helpImage100 {
 	border: 1px solid #333333;
 	width: 100px;
 	height: 100px;
+}
+.helpImage25 {
+	border: 1px solid #333333;
+	width: 25px;
+	height: 25px;
 }
 .helpText {
 	flex: 1;
