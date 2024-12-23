@@ -20,8 +20,17 @@ canvas {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	overflow: hidden;
+}
+@keyframes smooth-appear {
+	to{
+		transform: translateY(0);
+		opacity:1;
+	}
 }
 .dialog {
+    transform: translateY(100%);
+    opacity:0;
 	position: absolute;
 	background-color: #aaaaaa;
 	display: flex;
@@ -30,6 +39,7 @@ canvas {
 	border: 1px solid #333333;
 	max-height: 90%;
 	overflow-y: auto;
+	animation: smooth-appear 300ms ease-in-out forwards;
 }
 .dialogButton {
 	margin: 10px;
